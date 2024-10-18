@@ -9,6 +9,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 import lombok.AllArgsConstructor;
 
+// Create a configuration class to enable WebSocket support and map endpoints.
 @Configuration
 @EnableWebSocket
 @AllArgsConstructor
@@ -16,11 +17,13 @@ public class WebSocketConfig implements WebSocketConfigurer, WebMvcConfigurer {
 
     private final WebSocketMessageHandler messageHandler;
 
+    // Register the WebSocket handler
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(messageHandler, "/broadcast").setAllowedOrigins("*");
     }
 
+    // Enable CORS
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedOrigins("*");

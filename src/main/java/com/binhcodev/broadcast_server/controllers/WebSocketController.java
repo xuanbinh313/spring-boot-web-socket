@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.binhcodev.broadcast_server.configs.WebSocketMessageHandler;
 
 import lombok.AllArgsConstructor;
+
 @RestController
 @AllArgsConstructor
 public class WebSocketController {
-    private final WebSocketMessageHandler   messageHandler;
-    
+    private final WebSocketMessageHandler messageHandler;
+
+    // Get connected clients
     @GetMapping("/connected-clients")
     public List<String> getConnectedClients() {
         return messageHandler.getConnectedClients();
